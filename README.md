@@ -1,3 +1,3 @@
 # startup
 
-[notes.md](/startup/notes.md)
+[notes.md](notes.md)
