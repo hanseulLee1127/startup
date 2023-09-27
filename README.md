@@ -6,7 +6,7 @@
 # Finding your pakring spot
 ## Elevator pitch
 
-### Are you tired of endlessly circling the parking lots at BYU, hoping to find a spot? Introducing the 'Find a Parking Spot' app, your ultimate solution to the campus parking struggle! Our app uses real-time data and advanced algorithms to help you quickly locate available parking spaces on campus, saving you time and reducing stress. 
+### Are you tired of endlessly circling the parking lots at BYU, hoping to find a spot? Introducing the 'Find your Parking Spot' app, your ultimate solution to the campus parking struggle! Our app uses real-time data and advanced algorithms to help you quickly locate available parking spaces on campus, saving you time and reducing stress. 
 
 ## Design
 
