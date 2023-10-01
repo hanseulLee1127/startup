@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Finding Parking Lot</title>
+</head>
+<body>
+    <div class="header">
+        <div class="username">
+            Welcome, <span id="loggedInUsername"></span>!
+        </div>
+    </div>
+    <div class="container">
+        <h1>Finding Parking Lot</h1>
+        <h3 id="search">Enter the building you are going</h3>   
+        <div class="search-form">
+            <form action="#" method="get">
+                <input type="text" id="locationInput" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <h3>Your parking permit: U, Y</h3>
+        <h3 id="list_head">Here is the recommendation for you</h3>
+        <div class="container">
+            <ul id="parkingLotList">
+                <li>
+                    <span class="parking-lot-name">Parking Lot 1</span>
+                    <span class="parking-lot-location">Location 1</span>
+                    <button class="save-button">Save</button>
+                </li>
+                <li>
+                    <span class="parking-lot-name">Parking Lot 2</span>
+                    <span class="parking-lot-location">Location 2</span>
+                    <button class="save-button">Save</button>
+                </li>
+            </ul>
+        </div>
+    <script>
+        var storedUsername = localStorage.getItem("loggedInUsername");
+
+        var loggedInUsernameElement = document.getElementById("loggedInUsername");
+        if (storedUsername)
+            loggedInUsernameElement.textContent = storedUsername;
+
+            var parkingLotList = document.getElementById("parkingLotList");
+
+parkingLotList.addEventListener("click", function(event) {
+    if (event.target && event.target.classList.contains("save-button")) {
+        var parkingLotItem = event.target.closest("li");
+        var parkingLotName = parkingLotItem.querySelector(".parking-lot-name").textContent;
+        var parkingLotLocation = parkingLotItem.querySelector(".parking-lot-location").textContent;
+
+        // You can implement saving logic here, e.g., store in localStorage
+        alert("Parking Lot saved: " + parkingLotName + " - " + parkingLotLocation);}});
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
