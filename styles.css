@@ -28,6 +28,7 @@ body {
     text-align: left;
     height: 100%;
     width: 100%;
+
   }
   
   #search {
@@ -75,5 +76,25 @@ body {
   
   footer a:hover {
     text-decoration: underline;
+  }
+  
+  .save-button {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #4CAF50; /* Green color, change to your preference */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin-bottom: 5px;
+
+  }
+  
+  .save-button:hover {
+    background-color: #45a049; /* Darker green color on hover, change as needed */
   }
   
