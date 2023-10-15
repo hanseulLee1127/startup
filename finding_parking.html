@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <a href="index.html" class="back-button">Go Back to Home</a>
     <title>Finding Parking Lot</title>
 </header>
 <body>
@@ -50,9 +51,12 @@ parkingLotList.addEventListener("click", function(event) {
         var parkingLotName = parkingLotItem.querySelector(".parking-lot-name").textContent;
         var parkingLotLocation = parkingLotItem.querySelector(".parking-lot-location").textContent;
 
-        // You can implement saving logic here, e.g., store in localStorage
         alert("Parking Lot saved: " + parkingLotName + " - " + parkingLotLocation);}});
+        document.getElementById("reset-button").addEventListener("click", function() {
+            document.getElementById("parking-lot-form").reset();
+        });
     </script>
+
 </body>
 <footer>
     <a href="https://github.com/hanseulLee1127/startup">My github</a>

@@ -26,8 +26,7 @@
 
     <script>
         document.getElementById("loginForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the default form submission behavior
-
+            event.preventDefault();
             var username = document.getElementById("username").value;
             localStorage.setItem("loggedInUsername", username);
             window.open("/finding_parking.html", "_blank");

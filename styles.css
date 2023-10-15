@@ -81,7 +81,7 @@ body {
   .save-button {
     display: inline-block;
     padding: 5px 10px;
-    background-color: #4CAF50; /* Green color, change to your preference */
+    background-color: #6bd1f9;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -95,6 +95,24 @@ body {
   }
   
   .save-button:hover {
-    background-color: #45a049; /* Darker green color on hover, change as needed */
+    background-color: #20bfef;
+  }
+  
+
+  .back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6bd1f9;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 20px; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .back-button:hover {
+    background-color: #20bfef;
   }
   
