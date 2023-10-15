@@ -30,3 +30,10 @@
 - DB - Store users, parking spots in database.
 - login - Register and login users.
  
+ ## CSS deliverable
+ For this deliverable I porperly styled the application
+ - Header, footer, and main content body
+ - Navigation elements - I added login and go back button.
+ - Resposive to window resizing - My app can resize as window's size changes
+ - Application elements - Used good contrast adn whitespace
+ - application text conent - Consistent fonts
