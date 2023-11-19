@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    
     <a href="index.html" class="back-button">Go Back to Home</a>
     <title>Finding Parking Lot</title>
 </header>
 <body>
     <div class="container">
         <div class="username">
-            Welcome, <span id="loggedInUsername"></span>!
+            <span class="loggedInUsername"></span>
         </div>
         <h1>Finding Parking Lot</h1>
         <h3 id="search">Enter the building you are going</h3>   
@@ -36,27 +37,7 @@
                 </li>
             </ul>
         </div>
-    <script>
-        var storedUsername = localStorage.getItem("loggedInUsername");
-
-        var loggedInUsernameElement = document.getElementById("loggedInUsername");
-        if (storedUsername)
-            loggedInUsernameElement.textContent = storedUsername;
-
-            var parkingLotList = document.getElementById("parkingLotList");
-
-parkingLotList.addEventListener("click", function(event) {
-    if (event.target && event.target.classList.contains("save-button")) {
-        var parkingLotItem = event.target.closest("li");
-        var parkingLotName = parkingLotItem.querySelector(".parking-lot-name").textContent;
-        var parkingLotLocation = parkingLotItem.querySelector(".parking-lot-location").textContent;
-
-        alert("Parking Lot saved: " + parkingLotName + " - " + parkingLotLocation);}});
-        document.getElementById("reset-button").addEventListener("click", function() {
-            document.getElementById("parking-lot-form").reset();
-        });
-    </script>
-
+    <script src="finding_parking.js"></script>
 </body>
 <footer>
     <a href="https://github.com/hanseulLee1127/startup">My github</a>

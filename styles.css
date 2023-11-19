@@ -45,6 +45,7 @@ body {
   }
   
   label {
+    margin-top: 10px;
     display: block;
     font-weight: bold;
   }
@@ -58,7 +59,7 @@ body {
     border-radius: 5px;
   }
   
-  input[type="submit"] {
+  button[class = "btn btn-primary"] {
     width: 97%;
     padding: 12px; 
     background-color: #007BFF;
