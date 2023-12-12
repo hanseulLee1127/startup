@@ -44,3 +44,11 @@ For this deliverable I implemented by JavaScript so that the application works f
 - login - Implement a login functionality that navigates the user to the main application page after successful authentication.
 - Database - Use local storage to temporarily hold user data such as saved parking spots. This can be replaced by a database in the future for more robust data management.
 - application logic - search for parking lots, calculating distances, and saving parking lots.
+
+## Service deliverable
+For this deliverable I added backend endpoints that receives login info and parkingLot elements.
+- Node.js/Express HTTP service - done!
+- Static middleware for frontend - done!
+- Call to third party endponits - done!
+- Backend service endpoints - done!
+- Frontend calls service endpoints - done!
