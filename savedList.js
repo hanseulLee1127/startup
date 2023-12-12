@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         delete savedParkingLots[loggedInUser];
 
         localStorage.setItem('savedParkingLots', JSON.stringify(savedParkingLots));
-        
+
         displaySavedParkingLots();
     }
 });
