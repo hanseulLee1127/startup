@@ -1,0 +1,118 @@
+{
+    "lots": [
+      {
+        "name" : "59Y",
+        "privilege" : "Y",
+        "latitude" : "40.24389460280126",
+        "longitude": "-111.64904369847362"
+      },
+      {
+        "name" : "33Y",
+        "privilege" : "Y",
+        "latitude" : "40.24418531559687",
+        "longitude": "-111.65114118784929"
+      },
+      {
+        "name" : "56Y",
+        "privilege" : "Y",
+        "latitude" : "40.24398465671108",
+        "longitude": "-111.65422037635823"
+      },
+      {
+        "name" : "34Y",
+        "privilege" : "Y",
+        "latitude" : "40.24484043562378",
+        "longitude": "-111.65573314223506"
+      },
+      {
+        "name" : "57Y",
+        "privilege" : "Y",
+        "latitude" : "40.24348506533546",
+        "longitude": "-111.65646266125775"
+      },
+      {
+        "name" : "36Y",
+        "privilege" : "Y",
+        "latitude" : "40.24647617181387",
+        "longitude": "-111.65668260240463"
+      },
+      {
+        "name" : "38Y",
+        "privilege" : "Y",
+        "latitude" : "40.24741790282969",
+        "longitude": "-111.65606837654094"
+      },
+      {
+        "name" : "37Y",
+        "privilege" : "Y",
+        "latitude" : "40.24867898297776",
+        "longitude": "-111.65706615828492"
+      },
+      {
+        "name" : "46Y",
+        "privilege" : "Y",
+        "latitude" : "40.2486896834168",
+        "longitude": "-111.65901163095825"
+      },
+      {
+        "name" : "58Y",
+        "privilege" : "Y",
+        "latitude" : "40.25214524963319",
+        "longitude": "-111.65678003306708"
+      },
+      {
+        "name" : "45Y",
+        "privilege" : "Y",
+        "latitude" : "40.256108288447095",
+        "longitude": "-111.65701070303095"
+      },
+      {
+        "name" : "48Y",
+        "privilege" : "Y",
+        "latitude" : "40.2561410398684",
+        "longitude": "-111.65445724005252"
+      },
+      {
+        "name" : "49Y",
+        "privilege" : "Y",
+        "latitude" : "40.25625157579436",
+        "longitude": "-111.65228465075398"
+      },
+      {
+        "name" : "47Y",
+        "privilege" : "Y",
+        "latitude" : "40.25856460094421",
+        "longitude": "-111.65284791465483"
+      },
+      {
+        "name" : "62Y",
+        "privilege" : "Y",
+        "latitude" : "40.25905175900124",
+        "longitude": "-111.65519752974514"
+      },
+      {
+        "name" : "20Y",
+        "privilege" : "Y",
+        "latitude" : "40.25586265230512",
+        "longitude": "-111.64713480947013"
+      },
+      {
+        "name" : "50Y",
+        "privilege" : "Y",
+        "latitude" : "40.25781134125442",
+        "longitude": "-111.64540746685103"
+      },
+      {
+        "name" : "24Y",
+        "privilege" : "Y",
+        "latitude" : "40.25565795483302",
+        "longitude": "-111.64261796947042"
+      },
+      {
+        "name" : "61Y",
+        "privilege" : "Y",
+        "latitude" : "40.26380504743876",
+        "longitude": "-111.65727869300824"
+      }
+    ]
+  }
