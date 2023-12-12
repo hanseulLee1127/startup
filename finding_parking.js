@@ -31,7 +31,6 @@ class finding_parking {
         this.loggedInUser = this.getUsername();
     }
 
-
     getUser() {
         const userAccountsString = localStorage.getItem('userAccounts');
         
