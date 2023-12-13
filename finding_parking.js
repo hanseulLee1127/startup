@@ -1,9 +1,14 @@
 class finding_parking {
     constructor() {
         const loggedInEl = document.querySelector('.loggedInUsername');
-        const username = this.getUsername();
+        this.getUsername().then(username => {
+            if (username) {
+                const loggedInEl = document.querySelector('.loggedInUsername');
+                loggedInEl.textContent = `Welcome, ${username}!`;
+                this.loggedInUser = username;
+            }
+        });
         
-
         this.buildings = this.fetchJsonData('building.json', 'buildings');
         this.parkingLots = this.fetchJsonData('parkingLot.json', 'lots');
 
@@ -29,9 +34,24 @@ class finding_parking {
 
 
     getUsername() {
-        const user = localStorage.getItem("loggedInUser");
-        return user
-    }
+        return fetch('/api/getLoggedInUser')
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              this.loggedInUser = data.username;
+              return data.username;
+            } else {
+              alert(data.message);
+              return null;
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while fetching user information.');
+            return null;
+          });
+      }
+      
 
     calculateDistance(lat1, lon1, lat2, lon2) {
         const R = 6371;

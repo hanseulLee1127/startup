@@ -4,8 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const goBackButton = document.getElementById('goBackButton');
     const clearAllButton = document.getElementById('clearAllButton');
     const buttonsContainer = document.getElementById('buttonsContainer');
-  
-    // Call the function to fetch and display saved parking lots
+    const deleteSelectedButton = document.getElementById('deleteSelectedButton');
     displaySavedParkingLots();
   
     goBackButton.addEventListener('click', () => {
@@ -16,9 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
       clearAllSavedParkingLots();
     });
   
-    // Function to fetch and display saved parking lots from the server
+    deleteSelectedButton.addEventListener('click', () => {
+      deleteSelectedParkingLots();
+    });
+
     function displaySavedParkingLots() {
-      // Make an AJAX request to fetch saved parking lots from the server
       fetch('/api/getSavedParkingLots', {
         method: 'POST',
         headers: {
@@ -43,7 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
               const li = document.createElement('li');
               li.textContent = `${parkingLot.name} - ${parkingLot.distance}`;
               const checkbox = document.createElement('input');
-  
+              checkbox.type = 'checkbox';
+              checkbox.value = parkingLot.name;
+              checkbox.className = 'parking-lot-checkbox';
+              li.prepend(checkbox);
               ul.appendChild(li);
             });
   
@@ -63,35 +67,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
       
     function clearAllSavedParkingLots() {
-        const loggedInUser = localStorage.getItem('loggedInUser');
-        if (!loggedInUser) {
-          alert('User is not logged in.');
-          return;
-        }
-      
-        // Make an AJAX request to the server to clear all saved parking lots
-        fetch('/api/clearAllParkingLots', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            loggedInUser: loggedInUser,
-          }),
+      fetch('/api/clearAllParkingLots', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            alert('All saved parking lots cleared successfully.');
+            displaySavedParkingLots();
+          } else {
+            alert(data.message);
+          }
         })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.success) {
-              alert('All saved parking lots cleared successfully.');
-              displaySavedParkingLots();
-            } else {
-              alert(data.message);
-            }
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-            alert('An error occurred while clearing all saved parking lots.');
-          });
-      }
+        .catch((error) => {
+          console.error('Error:', error);
+          alert('An error occurred while clearing all saved parking lots.');
+        });
+  }
+
+  function deleteSelectedParkingLots() {
+    const selectedLots = Array.from(document.querySelectorAll('.parking-lot-checkbox:checked'))
+                             .map(checkbox => checkbox.value);
+
+    if (selectedLots.length === 0) {
+        alert('No parking lots selected.');
+        return;
+    }
+
+    fetch('/api/deleteSelectedParkingLots', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ parkingLots: selectedLots })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Selected parking lots deleted successfully.');
+            displaySavedParkingLots(); 
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while deleting selected parking lots.');
+    });
+}
       
 });
