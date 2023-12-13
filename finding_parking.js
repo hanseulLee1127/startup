@@ -2,11 +2,7 @@ class finding_parking {
     constructor() {
         const loggedInEl = document.querySelector('.loggedInUsername');
         const username = this.getUsername();
-        if (username) {
-            loggedInEl.textContent = "Welcome, " + username + "!";
-        } else {
-            loggedInEl.textContent = 'User not logged in';
-        }
+        
 
         this.buildings = this.fetchJsonData('building.json', 'buildings');
         this.parkingLots = this.fetchJsonData('parkingLot.json', 'lots');
