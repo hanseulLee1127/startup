@@ -52,3 +52,18 @@ For this deliverable I added backend endpoints that receives login info and park
 - Call to third party endponits - done!
 - Backend service endpoints - done!
 - Frontend calls service endpoints - done!
+
+## DB deliverable
+For this deliverable I stored the parkinglots in the database.
+
+- MongoDB Atlas database created - done!
+- Endpoints for data - done!
+- Stores data in MongoDB - done!
+
+## Login deliverable
+For this deliverable I associate the parkinglots with the logged in user.
+
+- User registration - If the username doesn't exist, it autometically create an account with the password
+- existing user - Stores the parkinglots under the same user if the user already exists.
+- Use MongoDB to store credentials - Stores both user/password and their saved parkingLots.
+- Restricts functionality - User can not search or save the parkingLots until the user have logged in.
