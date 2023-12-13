@@ -31,17 +31,6 @@ class finding_parking {
         this.loggedInUser = this.getUsername();
     }
 
-    getUser() {
-        const userAccountsString = localStorage.getItem('userAccounts');
-        
-        if (userAccountsString) {
-            const userAccounts = JSON.parse(userAccountsString);
-            const username = userAccounts.userAccounts;
-            return userAccounts;
-        }
-        
-        return userAccountsString;
-    }
 
     getUsername() {
         const user = localStorage.getItem("loggedInUser");
@@ -105,23 +94,30 @@ class finding_parking {
     }
 
     saveParkingLot(parkingLotInfo) {
-        const savedParkingLots = JSON.parse(localStorage.getItem('savedParkingLots')) || {};
-    
-        if (!savedParkingLots.hasOwnProperty(this.getUsername())) {
-            savedParkingLots[this.getUsername()] = [];
-        }
-    
-        const isAlreadySaved = savedParkingLots[this.getUsername()].some(savedLot => 
-            savedLot.name === parkingLotInfo.name && savedLot.building === parkingLotInfo.building);
-    
-        if (!isAlreadySaved) {
-            savedParkingLots[this.getUsername()].push(parkingLotInfo);
-            localStorage.setItem('savedParkingLots', JSON.stringify(savedParkingLots));
-            alert(`Parking lot ${parkingLotInfo.name} saved!`);
-        } else {
-            alert(`Parking lot ${parkingLotInfo.name} is already saved.`);
-        }
+        fetch('/api/saveParkingLot', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: this.loggedInUser,
+                parkingLot: parkingLotInfo,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(`Parking lot ${parkingLotInfo.name} saved!`);
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while saving the parking lot.');
+        });
     }
+    
     
     handleSaveButtonClick(button) {
         const parkingLotName = button.parentElement.querySelector('.parking-lot-name').textContent;
