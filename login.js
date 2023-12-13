@@ -2,7 +2,11 @@
 function login() {
   const usernameEl = document.querySelector("#id");
   const passwordEl = document.querySelector("#pw");
-
+    
+  if (!usernameEl.value.trim() || !passwordEl.value) {
+    alert("Username and password cannot be empty.");
+    return;
+  }
   fetch('/api/login', {
       method: 'POST',
       headers: {
