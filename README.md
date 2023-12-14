@@ -67,3 +67,10 @@ For this deliverable I associate the parkinglots with the logged in user.
 - existing user - Stores the parkinglots under the same user if the user already exists.
 - Use MongoDB to store credentials - Stores both user/password and their saved parkingLots.
 - Restricts functionality - User can not search or save the parkingLots until the user have logged in.
+
+## WebSocket deliverable
+For this deliverable I used webSocket to have live chat with other users on the frontend in realtime so that people can ask questions and have chat with each others.
+- Backend listens for WebSocket connection - done!
+- Frontend makes WebSocket connection - done!
+- Data sent over WebSocket connection - done!
+- WebSocket data displayed in the application interface - done!
