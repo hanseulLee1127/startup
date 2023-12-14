@@ -6,7 +6,7 @@ const dbConfig = require('./dbConfig.json');
 const cookieParser = require('cookie-parser');
 const WebSocket = require('ws');
 const app = express();
-const PORT = process.env.PORT || 4001;
+// const PORT = process.env.PORT || 4001;
 
 const server = require('http').createServer(app);
 const wss = new WebSocket.Server({ server });
@@ -179,9 +179,9 @@ app.get('/', (req, res) => {
 });
 
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Server is running on http://localhost:${PORT}`);
+// });
 
 wss.on('connection', (ws) => {
     console.log('New WebSocket connection');
@@ -199,6 +199,6 @@ wss.on('connection', (ws) => {
     });
 });
 
-server.listen(4002, () => {
-    console.log(`Server is running on http://localhost:${4002}`);
+server.listen(4001, () => {
+    console.log(`Server is running on http://localhost:${4001}`);
 });
