@@ -179,9 +179,9 @@ app.get('/', (req, res) => {
 });
 
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Server is running on http://localhost:${PORT}`);
+// });
 
 wss.on('connection', (ws) => {
     console.log('New WebSocket connection');
