@@ -68,21 +68,23 @@ class finding_parking {
     }
 
     initWebSocket() {
-        this.socket = new WebSocket('ws://localhost:4001'); 
-
-        this.socket.onopen = () => {
+        const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+        const socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+        // this.socket = new WebSocket('ws://localhost:4001'); 
+        this.socket = socket;
+        socket.onopen = () => {
             console.log('WebSocket connection established');
         };
 
-        this.socket.onmessage = (event) => {
+        socket.onmessage = (event) => {
             this.handleWebSocketMessage(event.data);
         };
 
-        this.socket.onerror = (error) => {
+        socket.onerror = (error) => {
             console.error('WebSocket error:', error);
         };
 
-        this.socket.onclose = () => {
+        socket.onclose = () => {
             console.log('WebSocket connection closed');
         };
     }

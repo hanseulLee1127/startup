@@ -6,7 +6,7 @@ const dbConfig = require('./dbConfig.json');
 const cookieParser = require('cookie-parser');
 const WebSocket = require('ws');
 const app = express();
-const PORT = process.env.PORT || 4002;
+const PORT = 4002;
 
 const server = require('http').createServer(app);
 const wss = new WebSocket.Server({ server });
