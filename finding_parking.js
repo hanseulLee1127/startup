@@ -68,7 +68,7 @@ class finding_parking {
     }
 
     initWebSocket() {
-        this.socket = new WebSocket('ws://localhost:4002'); 
+        this.socket = new WebSocket('ws://localhost:4001'); 
 
         this.socket.onopen = () => {
             console.log('WebSocket connection established');
