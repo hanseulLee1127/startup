@@ -4,10 +4,12 @@ const bodyParser = require('body-parser');
 const { MongoClient } = require('mongodb');
 const dbConfig = require('./dbConfig.json'); 
 const cookieParser = require('cookie-parser');
-
+const WebSocket = require('ws');
 const app = express();
 const PORT = process.env.PORT || 4001;
 
+const server = require('http').createServer(app);
+const wss = new WebSocket.Server({ server });
 
 const uri = `mongodb+srv://${dbConfig.userName}:${dbConfig.password}@${dbConfig.hostname}/myDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -29,7 +31,9 @@ app.use(express.static(path.join(__dirname)));
 app.use(cookieParser());
 
 app.post('/api/login', async (req, res) => {
-    const { username, password } = req.body;
+    const port = req.socket.localPort;
+    let username = req.body.username;
+    const password = req.body.password;
 
     if (!username || !password) {
         return res.status(400).json({ success: false, message: 'Username and password cannot be empty.' });
@@ -177,4 +181,24 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+wss.on('connection', (ws) => {
+    console.log('New WebSocket connection');
+
+    ws.on('message', (message) => {
+        wss.clients.forEach((client) => {
+            if (client !== ws && client.readyState === WebSocket.OPEN) {
+                client.send(message);
+            }
+        });
+    });
+
+    ws.on('close', () => {
+        console.log('WebSocket connection closed');
+    });
+});
+
+server.listen(4002, () => {
+    console.log(`Server is running on http://localhost:${4002}`);
 });

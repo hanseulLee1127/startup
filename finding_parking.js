@@ -28,10 +28,96 @@ class finding_parking {
                 this.handleSaveButtonClick(event.target);
             }
         });
-
-        this.loggedInUser = this.getUsername();
+        this.initializeChat();
+        this.initWebSocket();
+        this.addToggleChatButtonListener();
+       
     }
 
+    addToggleChatButtonListener() {
+        const toggleChatButton = document.getElementById('toggleChatButton');
+        const chatContainer = document.getElementById('chatContainer');
+
+        toggleChatButton.addEventListener('click', () => {
+            if (chatContainer.style.display === 'none') {
+                chatContainer.style.display = 'block';
+                toggleChatButton.textContent = 'Hide Chat';
+            } else {
+                chatContainer.style.display = 'none';
+                toggleChatButton.textContent = 'Show Chat';
+            }
+        });
+    }
+
+    initializeChat() {
+        const sendButton = document.getElementById('sendButton');
+        const chatInput = document.getElementById('chatInput');
+
+        sendButton.addEventListener('click', () => {
+            const message = chatInput.value;
+            chatInput.value = '';
+            this.sendChatMessage(message);
+        });
+    }
+
+    sendChatMessage(message) {
+        if (message) {
+            this.sendWebSocketMessage(message);
+            this.addMessageToChat('You', message);
+        }
+    }
+
+    initWebSocket() {
+        this.socket = new WebSocket('ws://localhost:4002'); 
+
+        this.socket.onopen = () => {
+            console.log('WebSocket connection established');
+        };
+
+        this.socket.onmessage = (event) => {
+            this.handleWebSocketMessage(event.data);
+        };
+
+        this.socket.onerror = (error) => {
+            console.error('WebSocket error:', error);
+        };
+
+        this.socket.onclose = () => {
+            console.log('WebSocket connection closed');
+        };
+    }
+
+
+    handleWebSocketMessage(data) {
+        if (data instanceof Blob) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.addMessageToChat('Anonymous', reader.result);
+            };
+            reader.readAsText(data);
+        } else {
+            this.addMessageToChat('Anonymous', data);
+        }
+    }
+
+    addMessageToChat(sender, message) {
+        const messageList = document.getElementById('messageList');
+        if (messageList) {
+            const newMessage = document.createElement('li');
+            newMessage.textContent = `${sender}: ${message}`;
+            messageList.appendChild(newMessage);
+            messageList.scrollTop = messageList.scrollHeight;
+        }
+    }
+
+
+    sendWebSocketMessage(message) {
+        if (this.socket.readyState === WebSocket.OPEN) {
+            this.socket.send(message);
+        } else {
+            console.error('WebSocket is not open.');
+        }
+    }
 
     getUsername() {
         return fetch('/api/getLoggedInUser')
